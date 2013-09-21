@@ -24,8 +24,9 @@ if [[ "$(type -P brew)" ]]; then
     bash
     ssh-copy-id
     git git-extras hub
-    tree sl id3tool cowsay
-    lesspipe nmap
+    coreutils
+    tree
+    lesspipe nmap links curl
     htop-osx man2html
   )
 
@@ -46,8 +47,8 @@ if [[ "$(type -P brew)" ]]; then
     fi
   fi
 
-  if [[ ! "$(type -P gcc-4.2)" ]]; then
-    e_header "Installing Homebrew dupe recipe: apple-gcc42"
-    brew install https://raw.github.com/Homebrew/homebrew-dupes/master/apple-gcc42.rb
-  fi
+  # if [[ ! "$(type -P gcc-4.2)" ]]; then
+  #   e_header "Installing Homebrew dupe recipe: apple-gcc42"
+  #   brew install https://raw.github.com/Homebrew/homebrew-dupes/master/apple-gcc42.rb
+  # fi
 fi
