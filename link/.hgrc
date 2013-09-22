@@ -1,0 +1,24 @@
+[ui]
+username = Mikołaj Pastuszko <mikolaj.pastuszko@gmail.com>
+style = compact
+ignore = ~/.hgignore_global
+[extensions]
+graphlog =
+pager =
+color =
+hgk =
+progress =
+churn =
+hgext.ftp = ~/.dotfiles/libs/hgext/hgftp/ftp.py
+hgext.histedit = ~/.dotfiles/libs/hgext/histedit/hg_histedit.py
+mq =
+rebase =
+pager =
+bookmarks =
+purge =
+transplant =
+[pager]
+ignore = version, help, update, push, pull, merge, fetch, convert, clone, record, crecord, grep, add, addremove, revert, commit, init
+[bookmarks]
+track.current = True
+

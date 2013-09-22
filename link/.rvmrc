@@ -1,0 +1,10 @@
+rvm_pretty_print_flag=1
+rvm_project_rvmrc_default=1
+rvm_archflags="-arch $(uname -m)"
+rvm_make_flags=(-j 3)
+rvm_auto_reload_flag=1
+
+# OSX-only stuff
+if [[ "$OSTYPE" =~ ^darwin ]]; then
+  ruby_configure_flags="--with-readline-dir=/usr/local/opt/readline"
+fi

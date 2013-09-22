@@ -9,6 +9,8 @@ export GREP_OPTIONS='--color=auto'
 
 # Prevent less from clearing the screen while still showing colors.
 export LESS=-XR
+# Add colors to less
+export LESSOPEN='|~/.lessfilter %s'
 
 # Set the terminal's title bar.
 function titlebar() {

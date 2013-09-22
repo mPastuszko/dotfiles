@@ -28,6 +28,7 @@ if [[ "$(type -P brew)" ]]; then
     tree
     lesspipe nmap links curl
     htop-osx man2html
+    readline
   )
 
   list="$(to_install "${recipes[*]}" "$(brew list)")"
