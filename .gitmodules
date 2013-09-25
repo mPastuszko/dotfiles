@@ -10,3 +10,6 @@
 [submodule "libs/nave"]
 	path = libs/nave
 	url = git://github.com/isaacs/nave.git
+[submodule "link/.vim"]
+	path = link/.vim
+	url = git@github.com:mPastuszko/vimfiles.git
