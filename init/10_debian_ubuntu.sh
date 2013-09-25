@@ -11,7 +11,7 @@ packages=(
   build-essential libssl-dev
   git-core
   tree sl tmux vim
-  nmap telnet links
+  nmap telnet links dnsutils
   htop sysv-rc-conf rcconf denyhosts
 )
 
