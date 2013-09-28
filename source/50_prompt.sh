@@ -24,14 +24,14 @@
 
 if [[ ! "${prompt_colors[@]}" ]]; then
   prompt_colors=(
-    "36" # information color
+    "34" # information color
     "37" # bracket color
     "31" # error color
   )
 
   if [[ "$SSH_TTY" ]]; then
     # connected via ssh
-    prompt_colors[0]="32"
+    prompt_colors[0]="33"
   elif [[ "$USER" == "root" ]]; then
     # logged in as root
     prompt_colors[0]="35"
@@ -44,7 +44,7 @@ alias prompt_getcolors='prompt_colors[9]=; local i; for i in ${!prompt_colors[@]
 # Exit code of previous command.
 function prompt_exitcode() {
   prompt_getcolors
-  [[ $1 != 0 ]] && echo " $c2$1$c9"
+  [[ $1 != 0 ]] && echo " $c2$1$c9 "
 }
 
 # Git status.
@@ -134,10 +134,10 @@ function prompt_command() {
   PS1="$PS1$c1[$c0\u$c1@$c0\h$c1:$c0\w$c1]$c9"
   PS1="$PS1\n"
   # date: [HH:MM:SS]
-  PS1="$PS1$c1[$c0$(date +"%H$c1:$c0%M$c1:$c0%S")$c1]$c9"
+  # PS1="$PS1$c1[$c0$(date +"%H$c1:$c0%M$c1:$c0%S")$c1]$c9"
   # exit code: 127
   PS1="$PS1$(prompt_exitcode "$exit_code")"
-  PS1="$PS1 \$ "
+  PS1="$PS1\$ "
 }
 
 PROMPT_COMMAND="prompt_command"
