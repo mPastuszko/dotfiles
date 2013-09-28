@@ -35,19 +35,30 @@ if [[ "$(type -P brew)" ]]; then
   if [[ "$list" ]]; then
     e_header "Installing Homebrew recipes: $list"
     brew install $list
-
-    if [[ ! "$(to_install "bash" "$list")" && ! "$(to_install "bash" "$(brew list)")" ]]; then
-      e_header "Adding bash to /etc/shells (requires sudo)"
-      echo "$(which bash)" | sudo tee -a /etc/shells >/dev/null
-    fi
-
-    if [[ ! "$(to_install "htop-osx" "$list")" && ! "$(to_install "htop-osx" "$(brew list)")" ]]; then
-      e_header "Updating htop permissions (requires sudo)"
-      sudo chown root:wheel "$(which htop)"
-      sudo chmod u+s "$(which htop)"
-    fi
   fi
 
+  # This is where brew stores its binary symlinks
+  local binroot="$(brew --config | awk '/HOMEBREW_PREFIX/ {print $2}')"/bin
+
+  # htop
+  if [[ "$(type -P $binroot/htop)" && "$(stat -L -f "%Su:%Sg" "$binroot/htop")" != "root:wheel" || ! "$(($(stat -L -f "%DMp" "$binroot/htop") & 4))" ]]; then
+    e_header "Updating htop permissions"
+    sudo chown root:wheel "$binroot/htop"
+    sudo chmod u+s "$binroot/htop"
+  fi
+
+  # bash
+  if [[ "$(type -P $binroot/bash)" && "$(cat /etc/shells | grep -q "$binroot/bash")" ]]; then
+    e_header "Adding $binroot/bash to the list of acceptable shells"
+    echo "$binroot/bash" | sudo tee -a /etc/shells >/dev/null
+  fi
+  if [[ "$SHELL" != "$binroot/bash" ]]; then
+    e_header "Making $binroot/bash your default shell"
+    sudo chsh -s "$binroot/bash" "$USER" >/dev/null 2>&1
+    e_arrow "Please exit and restart all your shells."
+  fi
+
+  # i don't remember why i needed this?!
   # if [[ ! "$(type -P gcc-4.2)" ]]; then
   #   e_header "Installing Homebrew dupe recipe: apple-gcc42"
   #   brew install https://raw.github.com/Homebrew/homebrew-dupes/master/apple-gcc42.rb
