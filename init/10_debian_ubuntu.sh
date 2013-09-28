@@ -10,7 +10,7 @@ sudo apt-get -qq dist-upgrade
 packages=(
   build-essential libssl-dev
   git-core
-  tree sl tmux vim
+  tree sl tmux vim ctags
   nmap telnet links dnsutils
   htop sysv-rc-conf rcconf denyhosts
 )

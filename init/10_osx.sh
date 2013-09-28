@@ -25,7 +25,7 @@ if [[ "$(type -P brew)" ]]; then
     ssh-copy-id
     git git-extras hub
     coreutils
-    tree
+    tree vim ctags
     lesspipe nmap links curl
     htop-osx man2html
     readline
