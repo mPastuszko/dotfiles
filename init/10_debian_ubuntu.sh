@@ -13,6 +13,7 @@ packages=(
   tree sl tmux vim ctags bash-completion
   nmap telnet links dnsutils
   htop sysv-rc-conf rcconf denyhosts
+  libxslt-dev libxml2-dev # nokogiri dependencies
 )
 
 list=()
