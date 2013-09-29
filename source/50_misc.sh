@@ -7,6 +7,8 @@ shopt -s checkwinsize
 
 export GREP_OPTIONS='--color=auto'
 
+# Set less as default pager
+export PAGER=less
 # Prevent less from clearing the screen while still showing colors.
 export LESS=-XRFS
 # Add colors to less
