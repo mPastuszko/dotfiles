@@ -3,6 +3,7 @@ rvm_project_rvmrc_default=1
 rvm_archflags="-arch $(uname -m)"
 rvm_make_flags=(-j 3)
 rvm_auto_reload_flag=1
+rvm_ignore_dotfiles=1
 
 # OSX-only stuff
 if [[ "$OSTYPE" =~ ^darwin ]]; then

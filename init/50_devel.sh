@@ -31,28 +31,34 @@ if [[ "$(type -P npm)" ]]; then
   fi
 fi
 
-# Install Ruby.
-# if [[ "$(type -P rbenv)" ]]; then
-#   versions=(2.0.0-p247)
 
-#   list="$(to_install "${versions[*]}" "$(rbenv whence ruby)")"
-#   if [[ "$list" ]]; then
-#     e_header "Installing Ruby versions: $list"
-#     for version in $list; do rbenv install "$version"; done
-#     [[ "$(echo "$list" | grep -w "${versions[0]}")" ]] && rbenv global "${versions[0]}"
-#     rbenv rehash
-#   fi
-# fi
+# Install RVM
+if [[ -z "$(type -P rvm)" ]]; then
+  e_header "Installing RVM"
+  curl -L https://get.rvm.io | bash -s stable --autolibs=enabled --ignore-dotfiles
+  # we need to link RVM config before the rubies compilation
+  ln -sf ~/.dotfiles/link/.rvmrc ~/
+  # Load RVM into a shell session *as a function*
+  [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+fi
 
-# Install Gems.
-# if [[ "$(type -P gem)" ]]; then
-#   gems=(bundler awesome_print pry)
+# Setup global gems
+global_gems=(
+  rubygems-bundler
+  bundler
+  rake
+  rvm
+  wirble
+  pry
+  awesome_print
+)
+e_header "Setting up global gems: ${global_gems[*]}"
+echo "${global_gems[*]}" | tr ' ' '\n' > $HOME/.rvm/gemsets/global.gems
 
-#   list="$(to_install "${gems[*]}" "$(gem list | awk '{print $1}')")"
-#   if [[ "$list" ]]; then
-#     e_header "Installing Ruby gems: $list"
-#     gem install $list
-#     rbenv rehash
-#   fi
-# fi
-
+# Install Ruby interpreters
+versions=(2.0.0 1.8.7 1.9.3)
+if [[ "$versions" ]]; then
+  e_header "Installing Ruby versions: $versions"
+  for version in $versions; do rvm install "$version"; done
+  [[ "$(echo "$versions" | grep -w "${versions[0]}")" ]] && rvm --default use 1.9.2 "${versions[0]}"
+fi
