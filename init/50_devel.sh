@@ -59,6 +59,6 @@ echo "${global_gems[*]}" | tr ' ' '\n' > $HOME/.rvm/gemsets/global.gems
 versions=(2.0.0 1.8.7 1.9.3)
 if [[ "$versions" ]]; then
   e_header "Installing Ruby versions: $versions"
-  for version in $versions; do rvm install "$version"; done
+  for version in ${versions[*]}; do rvm install "$version"; done
   [[ "$(echo "$versions" | grep -w "${versions[0]}")" ]] && rvm --default use 1.9.2 "${versions[0]}"
 fi
