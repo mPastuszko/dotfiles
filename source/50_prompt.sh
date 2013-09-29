@@ -3,13 +3,9 @@
 # Copyright (c) 2012 "Cowboy" Ben Alman
 # Licensed under the MIT license.
 # http://benalman.com/about/license/
-#
-# Example:
-# [master:!?][cowboy@CowBook:~/.dotfiles]
-# [11:14:45] $
-#
-# Read more (and see a screenshot) in the "Prompt" section of
-# https://github.com/cowboy/dotfiles
+
+# Setup term to use full color palette so that vim in tmux display colorscheme properly
+[ "$TERM" == "xterm" ] && export TERM="xterm-256color"
 
 # ANSI CODES - SEPARATE MULTIPLE VALUES WITH ;
 #
