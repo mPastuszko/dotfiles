@@ -9,7 +9,7 @@ sudo apt-get -qq dist-upgrade
 # Install APT packages.
 packages=(
   build-essential libssl-dev
-  git-core
+  git mercurial
   tree sl tmux vim ctags bash-completion
   nmap telnet links dnsutils
   htop sysv-rc-conf rcconf denyhosts

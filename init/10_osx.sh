@@ -23,7 +23,7 @@ if [[ "$(type -P brew)" ]]; then
   recipes=(
     bash
     ssh-copy-id
-    git git-extras hub
+    git git-extras hub mercurial
     coreutils
     tree vim ctags bash-completion
     lesspipe nmap links curl
