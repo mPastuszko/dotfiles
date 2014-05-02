@@ -5,6 +5,10 @@
 PATH=/usr/local/bin:$(path_remove /usr/local/bin)
 export PATH
 
+# Java
+JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_17.jdk/Contents/Home
+export JAVA_HOME
+
 # Trim new lines and copy to clipboard
 alias c="tr -d '\n' | pbcopy"
 

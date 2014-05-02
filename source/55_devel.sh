@@ -97,3 +97,6 @@ function npm_latest() {
 
 # rvm init
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+
+# Java
+export MAVEN_OPTS="-Xmx3000m"
