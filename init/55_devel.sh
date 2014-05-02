@@ -1,5 +1,5 @@
 # Load npm_globals, add the default node into the path.
-source ~/.dotfiles/source/50_devel.sh
+source ~/.dotfiles/source/55_devel.sh
 
 # Install Node.js.
  if [[ "$(type -P nave)" ]]; then
@@ -16,7 +16,7 @@ source ~/.dotfiles/source/50_devel.sh
 fi
 
 # Load npm_globals, add the default node into the path, initialize rbenv.
-source ~/.dotfiles/source/50_devel.sh
+source ~/.dotfiles/source/55_devel.sh
 
 # Install Npm modules.
 if [[ "$(type -P npm)" ]]; then
