@@ -1,5 +1,5 @@
 # Ubuntu-only stuff. Abort if not Ubuntu.
-[[ "$(uname -a)" =~ Debian ]] || [[ "$(uname -a)" =~ Ubuntu ]] || return 1
+[[ "$(uname -a)" =~ Debian ]] || [[ "$(uname -a)" =~ Ubuntu ]] || [[ "$(uname -a)" =~ raspbmc ]] || return 1
 
 # Package management
 alias update="sudo apt-get -qq update && sudo apt-get upgrade"

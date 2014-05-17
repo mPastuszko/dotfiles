@@ -1,5 +1,5 @@
 # Debian and Ubuntu-only stuff. Abort if not Debian or Ubuntu.
-[[ "$(uname -a)" =~ Debian ]] || [[ "$(uname -a)" =~ Ubuntu ]] || return 1
+[[ "$(uname -a)" =~ Debian ]] || [[ "$(uname -a)" =~ Ubuntu ]] || [[ "$(uname -a)" =~ raspbmc ]] || return 1
 
 # Update APT.
 e_header "Updating APT"
