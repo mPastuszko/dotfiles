@@ -13,6 +13,8 @@ export PAGER=less
 export LESS=-XRFS
 # Add colors to less
 export LESSOPEN='|~/.lessfilter %s'
+# Prevent accidental shell exiting
+export IGNOREEOF=1
 
 # Set the terminal's title bar.
 function titlebar() {
