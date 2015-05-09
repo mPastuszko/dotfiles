@@ -148,7 +148,7 @@ if [[ ! "$(type -P git)" ]]; then
       brew install git
     fi
   # Ubuntu.
-  elif [[ "$(cat /etc/issue 2> /dev/null)" =~ Ubuntu ]]; then
+  elif [[ -n "$(which apt-get)" ]]; then
     # Git is fairly easy.
     e_header "Installing Git"
     sudo apt-get -qq install git-core
