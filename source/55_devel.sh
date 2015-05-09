@@ -1,3 +1,6 @@
+# Don't setup dev environment on Raspberry Pi
+[[ "$(uname -a)" =~ armv ]] && return 1
+
 export PATH
 
 # nave init.
